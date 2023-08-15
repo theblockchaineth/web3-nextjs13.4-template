@@ -9,3 +9,7 @@ html {
 body {
     font-family: var(--font-inter);
 }
+
+.font-marker {
+    font-family: var(--font-marker);
+}

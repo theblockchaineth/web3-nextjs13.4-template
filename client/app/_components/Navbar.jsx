@@ -52,7 +52,7 @@ export default function Navbar() {
     const pathname = usePathname();
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 sticky top-0">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -73,7 +73,7 @@ export default function Navbar() {
                 </div>
             </div>
             <div className="btn btn-ghost navbar-center">
-                <a href={"/"} className="normal-case text-xl">The Pariah</a>
+                <a href={"/"} className="normal-case text-2xl tracking-wider font-marker">The Pariah</a>
             </div>
             <div className="navbar-end">
                 <div className="dropdown dropdown-end">

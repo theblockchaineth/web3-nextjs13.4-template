@@ -3,11 +3,18 @@
 import './globals.css'
 import type { Metadata } from 'next'
 	
-import { Inter } from 'next/font/google';
+import { Inter, Permanent_Marker } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+const marker = Permanent_Marker(
+  {
+    subsets: ['latin'],
+    weight: '400',
+    variable: '--font-marker',
 });
 
 import { ReduxProviders } from './_components/redux/Providers'
@@ -28,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="business">
-      <body className={`${inter.variable}`}>
+      <body className={`${inter.variable} ${marker.variable} before:min-h-screen `}>
           <ReduxProviders>
             <SessionProvider>
               <WagmiWrapper>
