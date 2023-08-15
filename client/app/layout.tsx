@@ -10,10 +10,11 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-import { ThemeProviders } from './_components/themes/Provider'
 import { ReduxProviders } from './_components/redux/Providers'
 import { SessionProvider } from "next-auth/react"
 import { WagmiWrapper } from "./_components/web3/WagmiWrapper"
+
+import Navbar from "./_components/Navbar"
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -26,17 +27,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="business">
       <body className={`${inter.variable}`}>
-        <ThemeProviders>
           <ReduxProviders>
             <SessionProvider>
               <WagmiWrapper>
+                <Navbar />
                 {children}
               </WagmiWrapper>
             </SessionProvider>
           </ReduxProviders>
-        </ThemeProviders>
       </body>
     </html>
   )

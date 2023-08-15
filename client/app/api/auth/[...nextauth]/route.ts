@@ -19,22 +19,15 @@ const handler = NextAuth({
           async authorize(credentials, _req) {
 
             const msgSigned = 'Validate with Signature'
-
             const recoveredAddress = await recoverMessageAddress({
               message: msgSigned,
               signature: <Address>credentials?.password || '',
             })
-
             const matchedAddress = recoveredAddress === credentials?.username
+            const user = { id: "1", name: credentials?.username, email: credentials?.username }
 
             if (matchedAddress) {
-              console.log('user', recoveredAddress) 
-              return {
-                email: recoveredAddress,
-                wallet: recoveredAddress,
-                message: msgSigned,
-                signature: credentials?.password,
-              }
+              return user
             } else {
               throw new Error('error message') // Redirect to error page
             }

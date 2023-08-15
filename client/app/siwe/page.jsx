@@ -2,12 +2,16 @@
 
 import { Web3Button } from '@web3modal/react'
 import { useSignMessage, useAccount } from 'wagmi'
-import { useSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
+import { useSearchParams } from 'next/navigation'
 
 export default function Page() {
     const { data, error, isLoading, signMessage, variables } = useSignMessage()
     const { address } = useAccount()
-    const { data: session } = useSession()
+    const searchParams = useSearchParams()
+    const redirect = searchParams.get('redirect')
+
+    const callbackUrl = redirect || '/'
 
     return (
         <div className="bg-white">
@@ -47,7 +51,7 @@ export default function Page() {
                             
                             <button 
                             className='rounded-md bg-pink-600 text-white px-3.5 py-2.5 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-pink-500'
-                                onClick={() => signIn('credentials', { username: address, password: data, callbackUrl: '/' })}>Sign in</button>
+                                onClick={() => signIn('credentials', { username: address, password: data, callbackUrl: callbackUrl })}>Sign in</button>
                         )}
 
                     </div>

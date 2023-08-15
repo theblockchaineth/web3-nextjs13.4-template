@@ -8,19 +8,8 @@ const config: Config = {
   ],
   plugins: [require("daisyui")],
   daisyui: {
-    themes: [
-      {
-        'lofi': {
-          ...require("daisyui/src/theming/themes")["[data-theme=lofi]"],
-        },
-        'business': {
-          ...require("daisyui/src/theming/themes")["[data-theme=business]"],
-          
-        }
-      }
-    ],
-
+    themes: ['business'],
   }
-
+  
 }
 export default config
