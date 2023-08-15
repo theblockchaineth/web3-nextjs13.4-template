@@ -2,13 +2,18 @@
 
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+	
+import { Inter } from 'next/font/google';
 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+import { ThemeProviders } from './_components/themes/Provider'
 import { ReduxProviders } from './_components/redux/Providers'
 import { SessionProvider } from "next-auth/react"
 import { WagmiWrapper } from "./_components/web3/WagmiWrapper"
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,14 +27,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ReduxProviders>
-          <SessionProvider>
-            <WagmiWrapper>
-              {children}
-            </WagmiWrapper>
-          </SessionProvider>
-        </ReduxProviders>
+      <body className={`${inter.variable}`}>
+        <ThemeProviders>
+          <ReduxProviders>
+            <SessionProvider>
+              <WagmiWrapper>
+                {children}
+              </WagmiWrapper>
+            </SessionProvider>
+          </ReduxProviders>
+        </ThemeProviders>
       </body>
     </html>
   )
