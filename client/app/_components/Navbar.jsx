@@ -90,15 +90,13 @@ export default function Navbar() {
                         <li><a>My Tokens</a></li>
                         <hr className="my-3"/>
                         <div className="text-gray-500 ml-3 my-1 mr-2 ">
-                            {status === "unauthenticated" && <p>Services:</p>}
-                            {status === "authenticated" && <p className="font-bold text-green-600">Services:</p>}
+                            <p>Services:</p>
                             {status === "unauthenticated" && <a className="my-4 w-full bg-pink-600 text-white hover:opacity-70 inline-flex items-center rounded-md disabled:outline hover:disabled:opacity-100 px-3 py-2 text-sm font-semibold shadow-sm" href={`/siwe?redirect=${pathname}`}>Sign In</a>}
                             {status === "authenticated" && <button className="my-4 w-full bg-red-600 text-white hover:opacity-70 inline-flex items-center rounded-md disabled:outline hover:disabled:opacity-100 px-3 py-2 text-sm font-semibold shadow-sm" onClick={() => signOut({redirect: true, callbackUrl: pathname})}>Sign Out</button>}
                         </div>
                         <hr className="my-3"/>
                         <div className="text-gray-500 ml-3 my-1">
-                            {address && <p className="font-bold text-green-600">Wallet:</p>}
-                            {!address && <p>Wallet:</p>}
+                            <p>Wallet:</p>
                         </div>
                         <div className="ml-3 mt-2 mb-6">
                             <Web3Button />
