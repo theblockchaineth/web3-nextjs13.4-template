@@ -59,7 +59,7 @@ export default function Page() {
                 <div className='mx-auto flex max-w-lg items-center justify-between'>
                 <div className={`my-4 w-full shadow sm:rounded-lg bg-white text-black`}>
                     <div className="px-4 py-5 sm:p-6">
-                        <h3 className="text-base font-semibold leading-6">You're already signed in....</h3>
+                        <h3 className="text-base font-semibold leading-6">You are already signed in....</h3>
                         <div className="mt-2 max-w-xl text-sm">
                             <p>
 
@@ -118,7 +118,7 @@ export default function Page() {
                         <h3 className="text-base font-semibold leading-6 ">Step 2: Sign Message</h3>
                         <div className="mt-2 max-w-xl text-sm ">
                             <p>
-                                This signature is used to verify that you own the wallet you're connecting with.
+                                This signature is used to verify that you own the wallet you are connecting with.
                             </p>
                         </div>
                         <div className="flex flex-row justify-between mt-5">
