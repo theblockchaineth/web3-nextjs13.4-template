@@ -57,7 +57,7 @@ export default function Navbar() {
     const { address } = useAccount();
 
     return (
-        <div className="mx-auto flex max-w-7xl items-center justify-between navbar bg-base-100 sticky top-0">
+        <div className="mx-auto flex items-center justify-between navbar bg-base-100 sticky top-0 z-50 opacity-100 shadow-xl shadow-zinc-600/30">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">

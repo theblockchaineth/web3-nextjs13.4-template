@@ -1,12 +1,9 @@
-import SessionDetails from './_components/SessionDetails'
-import GutteredWide from './_layouts/GutteredWide'
+import Hero from './_components/Home/Hero'
 
 export default function Home() {
   return (
     <main>
-      <GutteredWide>
-        <SessionDetails />
-      </GutteredWide>
+        <Hero />
     </main>
   )
 }
