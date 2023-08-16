@@ -5,6 +5,7 @@ import { UserCircleIcon, HomeModernIcon, PlusIcon, CheckIcon, QueueListIcon, Boo
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { signOut } from "next-auth/react";
+import { useAccount } from 'wagmi'
 
 const leftNavigationMenu = [
     {
@@ -52,7 +53,8 @@ const leftNavigationMenu = [
 export default function Navbar() {
 
     const pathname = usePathname();
-    const { status  } = useSession()
+    const { status  } = useSession();
+    const { address } = useAccount();
 
     return (
         <div className="mx-auto flex max-w-7xl items-center justify-between navbar bg-base-100 sticky top-0">
@@ -84,17 +86,21 @@ export default function Navbar() {
                         <UserCircleIcon />
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
-
                         <li><a>My Profile</a></li>
                         <li><a>My Tokens</a></li>
-                        <hr className="my-2"/>
-                        <li>
-                            {status === "unauthenticated" && <a href={`/siwe?redirect=${pathname}`}>Sign In (Services)</a>}
-                            {status === "authenticated" && <button onClick={() => signOut({redirect: true, callbackUrl: pathname})}>Sign Out (Services)</button>}
-                        </li>
-                        <hr className="my-2"/>
-                        <div className="text-gray-500 ml-3 my-1"><a>Connected Wallet:</a></div>
-                        <div className="ml-3 my-2">
+                        <hr className="my-3"/>
+                        <div className="text-gray-500 ml-3 my-1 mr-2 ">
+                            {status === "unauthenticated" && <p>Services:</p>}
+                            {status === "authenticated" && <p className="font-bold text-green-600">Services:</p>}
+                            {status === "unauthenticated" && <a className="my-4 w-full bg-pink-600 text-white hover:opacity-70 inline-flex items-center rounded-md disabled:outline hover:disabled:opacity-100 px-3 py-2 text-sm font-semibold shadow-sm" href={`/siwe?redirect=${pathname}`}>Sign In</a>}
+                            {status === "authenticated" && <button className="my-4 w-full bg-red-600 text-white hover:opacity-70 inline-flex items-center rounded-md disabled:outline hover:disabled:opacity-100 px-3 py-2 text-sm font-semibold shadow-sm" onClick={() => signOut({redirect: true, callbackUrl: pathname})}>Sign Out</button>}
+                        </div>
+                        <hr className="my-3"/>
+                        <div className="text-gray-500 ml-3 my-1">
+                            {address && <p className="font-bold text-green-600">Wallet:</p>}
+                            {!address && <p>Wallet:</p>}
+                        </div>
+                        <div className="ml-3 mt-2 mb-6">
                             <Web3Button />
                         </div>
                     </ul>
