@@ -14,8 +14,9 @@ export default function Page() {
     const { address, isReconnecting } = useAccount()
     const searchParams = useSearchParams()
     const redirection = searchParams.get('redirect')
+    const callback = searchParams.get('callbackUrl')
     const { status  } = useSession()
-    const callbackUrl = redirection || '/'
+    const callbackUrl = redirection || callback || '/'
 
     const colourStataManager = () => {
         if (!address) {

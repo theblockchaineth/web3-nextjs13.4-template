@@ -205,7 +205,9 @@ export default function CollectionGridHolder() {
             type="button"
             className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
-            <span className="mt-2 block text-sm font-semibold">COMING SOON</span>
+            <span className="mt-2 block text-sm font-marker font-xl ">
+              You are too early... Please check back later.
+            </span>
           </button>
         </div>
       </section>

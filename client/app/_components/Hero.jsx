@@ -53,12 +53,12 @@ export default function Hero() {
                                 </p>
                                 <div className="mt-10 flex items-center gap-x-6">
                                     <a
-                                        href="#"
+                                        href="/mint"
                                         className="rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
                                     >
                                         Mint Tokens
                                     </a>
-                                    <a href="#" className="text-sm font-semibold leading-6">
+                                    <a href="/allowlist" className="text-sm font-semibold leading-6">
                                         Allowlist Registration <span aria-hidden="true">→</span>
                                     </a>
                                 </div>

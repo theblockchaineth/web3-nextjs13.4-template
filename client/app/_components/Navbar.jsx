@@ -1,7 +1,7 @@
 "use client"
 
 import { Web3Button } from "@web3modal/react"
-import { UserCircleIcon, HomeModernIcon, PlusIcon, CheckIcon, QueueListIcon, BookOpenIcon, InformationCircleIcon, QuestionMarkCircleIcon, LinkIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon, HomeModernIcon, PlusIcon, CheckIcon, QueueListIcon, BookOpenIcon, QuestionMarkCircleIcon, LinkIcon } from '@heroicons/react/24/solid'
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { signOut } from "next-auth/react";
@@ -32,11 +32,6 @@ const leftNavigationMenu = [
         name: "Lore",
         href: "/lore",
         icon: <BookOpenIcon className="h-5 mr-2" />
-    },
-    {
-        name: "About",
-        href: "/about",
-        icon: <InformationCircleIcon className="h-5 mr-2" />
     },
     {
         name: "FAQ",
