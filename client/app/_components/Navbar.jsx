@@ -3,6 +3,8 @@
 import { Web3Button } from "@web3modal/react"
 import { UserCircleIcon, HomeModernIcon, PlusIcon, CheckIcon, QueueListIcon, BookOpenIcon, InformationCircleIcon, QuestionMarkCircleIcon, LinkIcon } from '@heroicons/react/24/solid'
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { signOut } from "next-auth/react";
 
 const leftNavigationMenu = [
     {
@@ -50,9 +52,10 @@ const leftNavigationMenu = [
 export default function Navbar() {
 
     const pathname = usePathname();
+    const { status  } = useSession()
 
     return (
-        <div className="navbar bg-base-100 sticky top-0">
+        <div className="mx-auto flex max-w-7xl items-center justify-between navbar bg-base-100 sticky top-0">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -85,7 +88,10 @@ export default function Navbar() {
                         <li><a>My Profile</a></li>
                         <li><a>My Tokens</a></li>
                         <hr className="my-2"/>
-                        <li><a href={`/siwe?redirect=${pathname}`}>Sign into Services</a></li>
+                        <li>
+                            {status === "unauthenticated" && <a href={`/siwe?redirect=${pathname}`}>Sign In (Services)</a>}
+                            {status === "authenticated" && <button onClick={() => signOut({redirect: true, callbackUrl: pathname})}>Sign Out (Services)</button>}
+                        </li>
                         <hr className="my-2"/>
                         <div className="text-gray-500 ml-3 my-1"><a>Connected Wallet:</a></div>
                         <div className="ml-3 my-2">
