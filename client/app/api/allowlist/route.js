@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
 import { decode } from 'next-auth/jwt';
 import { sql } from "@vercel/postgres";
 
@@ -11,7 +11,7 @@ export async function GET(request) {
       });
 
     console.log(decoded)
-    const wallet = decoded.email || ""
+    const wallet = decoded?.email || ""
 
     const { rows } = await sql`SELECT * FROM pariah_allowlist WHERE wallet = ${wallet}`
 
@@ -30,7 +30,7 @@ export async function POST(request) {
         token: sessionToken,
         secret: process.env.NEXTAUTH_SECRET,
       });
-    const wallet = decoded.email || ""
+    const wallet = decoded?.email || ""
 
     const { rows } = await sql`SELECT count(*) FROM pariah_allowlist`
     console.log(rows[0].count)
@@ -45,10 +45,8 @@ export async function POST(request) {
 
     if (rows2.length === 0) {
         const { rows:inserted } = await sql`INSERT INTO pariah_allowlist (wallet) VALUES (${wallet});`
-        return NextResponse.json({ message: "Added to Allowlist" })
+            return NextResponse.json({ message: "Added to Allowlist" })
     } else {
         return NextResponse.json({ message: "Already on the allowlist" })
     }
 }
-
-
