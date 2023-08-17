@@ -10,7 +10,7 @@ export async function GET(request) {
         secret: process.env.NEXTAUTH_SECRET,
     });
 
-    if (!decoded) return NextResponse.redirect('/siwe')
+    if (!decoded) return NextResponse.error({ status: 401 })
 
     console.log(decoded)
     const wallet = decoded.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -33,7 +33,7 @@ export async function POST(request) {
         secret: process.env.NEXTAUTH_SECRET,
     });
 
-    if (!decoded) return NextResponse.redirect('/siwe')
+    if (!decoded) return NextResponse.error({ status: 401 })
 
     console.log(decoded)
     const wallet = decoded.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
