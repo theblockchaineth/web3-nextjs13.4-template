@@ -1,15 +1,11 @@
 import { NextResponse } from 'next/server';
-import { decode } from 'next-auth/jwt';
+import { getToken } from 'next-auth/jwt';
 import { sql } from "@vercel/postgres";
 
 export async function GET(request) {
 
-    const sessionToken = request.cookies.get('next-auth.session-token')?.value
-    const decoded = await decode({
-        token: sessionToken,
-        secret: process.env.NEXTAUTH_SECRET,
-    });
-    const wallet = String(decoded?.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+    const token = await getToken({ request })
+    const wallet = token.email
 
     const { rows } = await sql`SELECT * FROM pariah_allowlist WHERE wallet = ${wallet}`
 
@@ -23,12 +19,8 @@ export async function GET(request) {
 
 export async function POST(request) {
 
-    const sessionToken = request.cookies.get('next-auth.session-token')?.value
-    const decoded = await decode({
-        token: sessionToken,
-        secret: process.env.NEXTAUTH_SECRET,
-    });
-    const wallet = String(decoded.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+    const token = await getToken({ request })
+    const wallet = token.email
 
     const { rows } = await sql`SELECT count(*) FROM pariah_allowlist`
 
