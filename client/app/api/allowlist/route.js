@@ -9,6 +9,8 @@ export async function GET(request) {
         token: sessionToken,
         secret: process.env.NEXTAUTH_SECRET,
       });
+
+    console.log(decoded)
     const wallet = decoded.email || ""
 
     const { rows } = await sql`SELECT * FROM pariah_allowlist WHERE wallet = ${wallet}`
