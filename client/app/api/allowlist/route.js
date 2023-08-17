@@ -9,11 +9,7 @@ export async function GET(request) {
         token: sessionToken,
         secret: process.env.NEXTAUTH_SECRET,
     });
-
-    if (!decoded) return NextResponse.error({ status: 401 })
-
-    console.log(decoded)
-    const wallet = decoded.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    const wallet = String(decoded?.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
     const { rows } = await sql`SELECT * FROM pariah_allowlist WHERE wallet = ${wallet}`
 
@@ -32,14 +28,9 @@ export async function POST(request) {
         token: sessionToken,
         secret: process.env.NEXTAUTH_SECRET,
     });
-
-    if (!decoded) return NextResponse.error({ status: 401 })
-
-    console.log(decoded)
-    const wallet = decoded.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    const wallet = String(decoded.email || "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
     const { rows } = await sql`SELECT count(*) FROM pariah_allowlist`
-    console.log(rows[0].count)
 
     if (rows[0].count > 199) {
         return NextResponse.json(
