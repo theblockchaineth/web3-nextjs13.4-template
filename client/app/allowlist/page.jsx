@@ -65,7 +65,7 @@ export default function Page() {
                                 <p className='mt-12'><Web3Button /></p>
                                 <div className="mt-10 flex">
                                 <CheckCircleIcon height={24} width={24} className='mr-4 text-green-600'/>
-                                    <p className='text-lg font-bold text-green-600 tracking-wide'>  You are already on the list...</p>
+                                    <p className='text-lg font-bold text-green-600 tracking-wide'>  On the list...</p>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@ export default function Page() {
                                 <p className='mt-12'><Web3Button /></p>
                                 <div className="mt-10 flex">
                                     <button onClick={() => handleSubmitAndRefresh()} className="text-sm font-semibold leading-6 text-pink-600">
-                                        Add to allowist <span aria-hidden="true">&rarr;</span>
+                                        Add to allowlist <span aria-hidden="true">&rarr;</span>
                                     </button>
                                 </div>
                             </div>
