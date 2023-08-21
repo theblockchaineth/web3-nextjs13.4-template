@@ -10,7 +10,6 @@ export async function GET(
     {
 
     const token = await getToken({ req })
-    console.log(token)
     const wallet = token?.email || "0x000000"
 
     const { rows } = await sql`SELECT * FROM pariah_allowlist WHERE wallet = ${wallet}`
@@ -28,7 +27,6 @@ export async function POST(
     ) {
 
     const token = await getToken({ req })
-    console.log(token)
     const wallet = token?.email || "0x000000"
 
     const { rows } = await sql`SELECT count(*) FROM pariah_allowlist`

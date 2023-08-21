@@ -5,8 +5,9 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, polygon } from 'wagmi/chains'
+import { goerli } from 'viem/chains';
 
-const chains = [arbitrum, mainnet, polygon]
+const chains = [arbitrum, mainnet, polygon, goerli]
 const projectId = process.env.NEXT_PUBLIC_WC_ID
 
 const { publicClient } = configureChains(chains, [

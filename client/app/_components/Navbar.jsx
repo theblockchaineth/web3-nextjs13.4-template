@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { signOut } from "next-auth/react";
 import { useAccount } from 'wagmi'
+import { useEffect } from "react";
 
 const leftNavigationMenu = [
     {
@@ -48,11 +49,24 @@ const leftNavigationMenu = [
 export default function Navbar() {
 
     const pathname = usePathname();
-    const { status  } = useSession();
-    const { address } = useAccount();
+    const { data: session, status  } = useSession();
+    const { address, isConnecting, isReconnecting } = useAccount();
+
+    // if session.user.email !== wagnmi useAccount address, sign out
+    
+    useEffect(() => {
+        if (session && address && session.user.email !== address) {
+            signOut()
+        }
+        // also, if there is a session but no address, sign out
+        if (session && !address) {
+            signOut()
+        }
+    }, [session, address])
+
 
     return (
-        <div className="mx-auto flex items-center justify-between navbar bg-base-100 sticky top-0 z-50 opacity-100 shadow-xl shadow-zinc-600/30">
+        <div className="mx-auto flex items-center justify-between navbar bg-base-100 sticky top-0 z-50 opacity-100 shadow-xl shadow-black/30">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
