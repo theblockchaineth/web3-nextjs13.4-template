@@ -3,7 +3,7 @@ export async function getSiteConfig() {
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data',  { cache: 'no-store' })
+        throw new Error('Failed to fetch data',  { next: { revalidate: 0 } })
     }
 
     const json = await res.json()
@@ -19,3 +19,5 @@ export async function getSiteConfig() {
         publicsale
     }
 }
+
+fetch(`https://...`, { next: { revalidate: false | 0 | number } })
