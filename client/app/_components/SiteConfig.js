@@ -19,5 +19,3 @@ export async function getSiteConfig() {
         publicsale
     }
 }
-
-fetch(`https://...`, { next: { revalidate: false | 0 | number } })

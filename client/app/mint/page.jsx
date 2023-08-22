@@ -12,11 +12,11 @@ export default async function Page() {
 
     return (
     <main>
-        <Hero presale={presale} publicsale={publicsale} />
+        <Hero presale={true} publicsale={publicsale} />
         <div className='bg-black min-h-[calc(85vh)] lg:pt-8'>
             <br />
             <br />
-            {presale && <Presale />}
+            <Presale />
             <br />
             <br />
             {publicsale && <PublicSale />}
