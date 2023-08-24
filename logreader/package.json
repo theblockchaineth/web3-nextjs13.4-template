@@ -1,17 +1,15 @@
 {
-    "name": "merkletree",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "alchemy-sdk": "^2.9.2",
-        "keccak256": "^1.0.6",
-        "merkletreejs": "^0.3.10"
-    }
+  "name": "logreader",
+  "version": "1.0.0",
+  "description": "n/a",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "alchemy-sdk": "^2.9.2",
+    "ethers": "^6.7.1"
+  },
+  "author": "",
+  "license": "ISC"
 }

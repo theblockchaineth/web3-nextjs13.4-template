@@ -1,0 +1,19 @@
+model: icomix-westernani-occidental-603010.safetensors [63ee47143d]
+
+negative: (easynegative:1.1) (super hero:1.3) (comic) (action marks) (worst quality:1.4), (low quality:1.4), (monochrome:1.1), (NSFW:1.2), (large breasts:1.2), (nipples:1.2), malformed hands, bad hands, mutated fingers, (extra limbs:1.2), branding, graffiti, words, watermarks, text, name, signature, logo, blurry, bad anatomy, disfigured, jpeg artifacts, child, depth of field, (breasts:1.3) , (cross eyed:1.2), (misaligned eyes:1.2), (bad eyes:1.2), (unclear eyes:1.2)
+
+sampler: DPM++ 2M Karras
+steps: 50
+
+width:768
+height:1024
+
+CFG: 14
+seed:2054324668
+extra:variation: 0.05
+
+setting:
+Pad prompt/negative prompt to be same length: true
+Token merging ratio : 06
+SD VAE : Automatic
+clip skip: 2

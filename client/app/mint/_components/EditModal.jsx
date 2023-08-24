@@ -91,8 +91,6 @@ export default function EditModel(props) {
                             <option value={5}>Casual</option>
                             <option value={6}>Hiphop</option>
                             <option value={7}>Hippies</option>
-                            <option value={8}>Preppy</option>
-                            <option value={9}>Preppy</option>
                         </select>
 
                         {/* Physique */}
