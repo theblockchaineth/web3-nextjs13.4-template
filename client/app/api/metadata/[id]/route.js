@@ -10,5 +10,5 @@ export async function GET(req, { params }) {
 
     console.log(id, jsonDirectory, fileContents)
 
-    return NextResponse.json({ id })
+    return NextResponse.json({ fileContents })
 }
