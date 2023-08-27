@@ -17,7 +17,7 @@ export async function GET(req, { params }) {
     if (id < 20) {
         return NextResponse.json({
             "tokenId": id,
-            "name": "The Pariah: #" + String(id) + "(Developer Token)",
+            "name": "The Pariah: #" + String(id) + " (Developer Token)",
             "description": "The Pariah is an exploration and fusion of classic, gritty, American Comic Art and a concept story of a near-future metropolis haunted by a mysterious killer.",
             "image": "ipfs://QmR9xDgDshDaVDkKwfGm2PECAPZnzvDxEU6JViJdGoqDai",
             "attributes": [
